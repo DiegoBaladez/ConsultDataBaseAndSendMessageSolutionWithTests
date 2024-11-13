@@ -6,7 +6,7 @@ using MessagesApi.Interfaces;
 
 namespace MessagesApi.Services
 {
-    public class GenerateStatementService : GenerateMessageService, IGenerateMessage
+    public class GenerateStatementService : GenerateMessageService
     {
         public override BussinesMessage GenerateMessage(object customerInfo)
         {

@@ -6,7 +6,7 @@ namespace MessagesApi.Services
 {
     public static class GenerateMessageFactoryService
     {
-        public static IGenerateMessage GetMessageGenerator(MessageType type)
+        public static GenerateMessageService GetMessageGenerator(MessageType type)
         {
             switch (type)
             {
