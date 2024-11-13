@@ -1,7 +1,9 @@
-﻿namespace MessagesApi.Interfaces
+﻿using MessagesApi.DTO.Messages;
+
+namespace MessagesApi.Interfaces
 {
     public interface IGenerateMessage
     {
-        string GenerateMessage(object customerInfo);
+        BussinesMessage GenerateMessage(object customerInfo);
     }
 }

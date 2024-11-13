@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace MessagesApi.Services
 {
-    public static class XmlSerializer<T> where T : class
+    public static class MessagesSerializer<T> where T : class
     {
         public static string Serialize(T obj)
         {

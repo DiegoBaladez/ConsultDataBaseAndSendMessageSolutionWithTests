@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace MessagesApi.DTO.Messages
 {
     [Serializable]
-    public class Statement : BaseMessage
+    public class Statement : BussinesMessage
     {
         [XmlElement("CustomerName")]
         public string CustomerName { get; set; }

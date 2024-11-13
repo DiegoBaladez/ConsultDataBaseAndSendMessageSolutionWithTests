@@ -1,4 +1,5 @@
 ﻿using MessagesApi.Constants.Enums;
+using MessagesApi.DTO.Messages;
 using MessagesApi.Interfaces;
 using MessagesApi.Interfaces.External;
 
@@ -13,11 +14,13 @@ namespace MessagesApi.Services
             _databaseApi = databaseApi;
         }
 
-        public async Task<string> GetStatement(long accountNumber)
+        public async Task<string> SendBankToCustomerMessages(long accountNumber, MessageType messageType)
         {
-            var messageGenerator = GenerateMessageFactoryService.GetMessageGenerator(MessageType.Statement);
+            var messageGenerator = GenerateMessageFactoryService.GetMessageGenerator(messageType);
 
-            return messageGenerator.GenerateMessage(await _databaseApi.GetCustomerTransactions(accountNumber));
+            var xmlMessage =  messageGenerator.GenerateMessage(await _databaseApi.GetCustomerTransactions(accountNumber));
+
+            return MessagesSerializer<BussinesMessage>.Serialize(xmlMessage);
         }
     }
 }

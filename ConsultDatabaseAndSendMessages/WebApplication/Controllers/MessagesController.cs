@@ -1,3 +1,4 @@
+using MessagesApi.Constants.Enums;
 using MessagesApi.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace MessagesApi.Controllers
             try
             {
                 _logger.LogInformation($"Begin routine at: {DateTime.Now}");
-                var message = await _sendMessages.GetStatement(accountNumber);
+                var message = await _sendMessages.SendBankToCustomerMessages(accountNumber, MessageType.Statement);
                 _logger.LogInformation($"End routine at: {DateTime.Now}");
                 return Ok(message);
             }

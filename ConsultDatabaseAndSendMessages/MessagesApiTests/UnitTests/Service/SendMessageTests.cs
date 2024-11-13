@@ -3,7 +3,7 @@ using AutoFixture.AutoMoq;
 using FluentAssertions;
 using MessagesApi.Constants.Enums;
 using MessagesApi.DTO;
-using MessagesApi.DTO.External;
+using MessagesApi.DTO.Messages;
 using MessagesApi.Interfaces;
 using MessagesApi.Interfaces.External;
 using MessagesApi.Services;
@@ -35,15 +35,16 @@ namespace MessagesApiTests.UnitTests.Service
 
             var messageGenerator = GenerateMessageFactoryService.GetMessageGenerator(MessageType.Statement);
             var messageParameter = messageGenerator.GenerateMessage(customerTransactions);
+            var xmlString = MessagesSerializer<BussinesMessage>.Serialize(messageParameter);
 
             _databaseApi.Setup(k => k.GetCustomerTransactions(It.IsAny<long>())).ReturnsAsync(customerTransactions);
 
             //act
-            var result = _sendMessages.GetStatement(accountNumber).Result;
+            var result = _sendMessages.SendBankToCustomerMessages(accountNumber, MessageType.Statement).Result;
 
             //assert
             _databaseApi.Verify(db => db.GetCustomerTransactions(accountNumber), Times.Once);
-            result.Should().Be(messageParameter);
+            result.Should().Be(xmlString);
         }
     }
 }
