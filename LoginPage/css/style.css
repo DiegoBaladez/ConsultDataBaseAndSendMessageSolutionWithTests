@@ -1,0 +1,37 @@
+.centerContainer {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+}
+.rectangularContainer {
+    height: 350px;
+    width: 300px;
+    background-color: #D3D3D3;    
+    border-radius: 10px 20px;
+  }  
+  .loginMessage{                 
+    font-size: x-large;
+  }
+  .dataEntry{
+      font-size: medium;
+      padding-top: 5px;
+      padding-bottom: 5px;
+  }
+  .dataEntrySection{
+    text-align: left;
+    padding-left: 30px;
+  }
+  .checkBox{
+    font-size: smaller;
+  }
+  .enterButtonSection{
+    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+  }
+  .loginButton{
+    border-radius: 8px;
+    height: 30px;
+    width: 60px;
+  }
